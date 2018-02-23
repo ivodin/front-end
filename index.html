@@ -1,150 +1,30 @@
 <!DOCTYPE html>
 <html>
-<title>Homework #7</title>
-<style>
-header {
-	font-size: 3em;
-	text-align: center;
-}
-p {
-	display: inline;
-	color: red;
-}
-
-</style>
-<script type="text/javascript">
-
-  function gt() {
-  	var i;
-  	var n=parseInt(document.getElementById("giaithua").value);
- 	var giaithua=1;
-  	for (i=1;i<n+1;i++) {
-    	giaithua*=i;
-	}
-   document.getElementById("bt1").innerHTML =giaithua;
-   if (document.getElementById("giaithua").value=="") {
-  		document.getElementById("bt1").innerHTML="Chưa nhập n";
-  		} else if (isNaN(n)==true) {
-  		document.getElementById("bt1").innerHTML="n phải là dạng số";
-  		}
-  }
-
-  function dc() {
-  	var chuoi=document.getElementById("daochuoi").value;
-  	var daochuoi = "";
-  	var i;
-  	for (i=1;i<chuoi.length+1;i++) {
-    	daochuoi+=chuoi.substr(chuoi.length-i,1);
-  	}
-  	document.getElementById("bt2").innerHTML = daochuoi;
-  	if (chuoi=="") {
-  		document.getElementById("bt2").innerHTML="Chưa nhập chuỗi";
-  		}
-  }
-
-  function dup() {
-  	var chuoi=document.getElementById("dupli").value;
-  	var i;
-  	var duplicate=chuoi;
-  	for(i=1;i<10;i++) {
-    	duplicate+= "-"+chuoi;
-  	}
-  document.getElementById("bt3").innerHTML = duplicate;
-  if (chuoi=="") {
-  		document.getElementById("bt3").innerHTML="Chưa nhập chuỗi";
-  		}
-  }
-
-  function xepten() {
-  	var mang=document.getElementById("hoten").value.split("-");
-  	var thutu=mang.sort();
-  	var i;
-  	var danhsach; 
-    if (mang=="") {
-  		document.getElementById("bt4").innerHTML="Chưa nhập mảng";
-  		} else {
-  			for (i=1;i<thutu.length+1;i++) {
-      		danhsach= i + ". " + thutu[i-1]+"<br>";
-      		document.write(danhsach);
-			}
-  		 }
-  }
-
-  function gapdoi() {
-  	var a=document.getElementById("mangso").value.split("-");
-	var b=new Array();
-	var i;
-	if (a=="") {
-  		document.getElementById("bt5").innerHTML="Chưa nhập mảng";
-  		} else {
-  			for (i=0;i<a.length;i++) {
-    		b.push(a.slice(i,i+1)*2);
-    		}
-    		document.write(b.join("-")); 
-		}
- }
-
-  function laysodu() {
-  	var a=document.getElementById("chia2").value.split("-");
-	var b=new Array();
-	var i;
-	if (a=="") {
-  		document.getElementById("bt6").innerHTML="Chưa nhập mảng";
-  		} else {
-  			for (i=0;i<a.length;i++) {
-    		b.push(a.slice(i,i+1)%2);
-    		}
-    		document.write(b.join("-")); 
-		}
- }
-
-</script>
-<header>
-	Bài tập 7 - Loop
-</header>
 <body>
-<form>
-	<h2>Câu 1: Hàm tính giai thừa
-	</h2>
-	Nhập n:
-	<input type="text" size="5" id="giaithua"><br>
-	<input type="button" onclick="gt()" value="n!=">
-	<p id="bt1"></p>
 
-	<h2>Câu 2: Hàm đảo ngược chuỗi
-	</h2>
-	Nhập chuỗi:
-	<input type="text" size="5" id="daochuoi"><br>
-	<input type="button" onclick="dc()" value="Đảo chuỗi:">
-	<p id="bt2"></p>
+<p>Nhấn nút để bắt đầu</p>
 
-	<h2>Câu 3: Hàm Duplicate
-	</h2>
-	Nhập chuỗi:
-	<input type="text" size="5" id="dupli"><br>
-	<input type="button" onclick="dup()" value="Duplicate:">
-	<p id="bt3"></p>
+<button onclick="nhapten()">Bắt đầu</button>
 
-	<h2>Câu 4: Hàm sắp xếp tên
-	</h2>
-	Nhập mảng họ tên (ngăn cách bằng dấu "-"):
-	<input type="text" size="50" id="hoten"><br>
-	<input type="button" onclick="xepten()"  value="Sắp xếp:">
-	<p id="bt4"></p>
+<p id="ten"></p>
+<p id="city"></p>
+<script>
+function nhapten() {
+    var ten = prompt("Please enter your name");
+    if (ten != null) {
+        document.getElementById("ten").innerHTML =
+        "1.Họ tên: " + ten;
+        thanhpho();
+    }
+}
+function thanhpho() {
+    var thanhpho = prompt("Please enter your city");
+    if (thanhpho != null) {
+        document.getElementById("city").innerHTML =
+        "2.Thành phố: " + thanhpho;
+    }
+}
+</script>
 
-	<h2>Câu 5: Hàm gấp đôi mảng số
-	</h2>
-	Nhập mảng số (ngăn cách bằng dấu "-"):
-	<input type="text" size="50" id="mangso"><br>
-	<input type="button" onclick="gapdoi()" value="Gấp đôi mảng:">
-	<p id="bt5"></p>
-
-	<h2>Câu 6: Hàm tạo mảng mới là số dư khi chia cho 2
-	</h2>
-	Nhập mảng số (ngăn cách bằng dấu "-"):
-	<input type="text" size="50" id="chia2"><br>
-	<input type="button" onclick="laysodu()" value="Tạo mảng mới:">
-	<p id="bt6"></p>
-</form>
 </body>
 </html>
