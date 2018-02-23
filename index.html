@@ -1,30 +1,17 @@
-<!DOCTYPE html>
 <html>
 <body>
-
-<p>Nhấn nút để bắt đầu</p>
-
-<button onclick="nhapten()">Bắt đầu</button>
-
-<p id="ten"></p>
-<p id="city"></p>
-<script>
-function nhapten() {
-    var ten = prompt("Please enter your name");
-    if (ten != null) {
-        document.getElementById("ten").innerHTML =
-        "1.Họ tên: " + ten;
-        thanhpho();
-    }
-}
-function thanhpho() {
-    var thanhpho = prompt("Please enter your city");
-    if (thanhpho != null) {
-        document.getElementById("city").innerHTML =
-        "2.Thành phố: " + thanhpho;
-    }
-}
-</script>
-
+    <p id="1"></p>
+    <p id="2"></p>
 </body>
+<script>
+window.alert("batdau");
+</script>
+<script>
+var x=prompt("Ten");
+document.getElementById("1").innerHTML=x;
+</script>
+<script>
+var y=prompt("TP");
+document.getElementById("2").innerHTML=y;
+</script>
 </html>
