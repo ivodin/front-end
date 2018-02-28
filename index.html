@@ -1,17 +1,116 @@
+<!DOCTYPE html>
 <html>
+<meta content="text/html; charset=utf-8" />
+<style>
+form {
+	width: 50%;
+	margin-top: 5%;
+	margin-left: 20%;
+	border: 1px solid;
+	padding: 5%;
+}
+form > div {
+	margin: 1%;
+}
+span:first-child {
+	float: left;
+	width: 10%;
+}
+input {
+	width: 25%;
+}
+input + span {
+	display: none;
+}
+h3 {
+	text-align: center;
+}
+table {
+	width: 60%;
+	margin-left: 20%;
+
+}
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}	
+</style>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+	$("#nhap").click(function() {
+		var hoten=$("#hoten").val();
+		if (hoten=="") {
+			$("#hoten + span").show();
+		}
+		var lop=$("#lop").val();
+		if (lop=="") {
+			$("#lop + span").show();
+		}
+		var toan=$("#toan").val();
+		if (toan=="") {
+			$("#toan + span").show();
+		}
+		var ly=$("#ly").val();
+		if (ly=="") {
+			$("#ly + span").show();
+		}
+		var hoa=$("#hoa").val();
+		if (hoa=="") {
+			$("#hoa + span").show();
+		}
+	})
+});
+</script>
+</head>
+
 <body>
-    <p id="1"></p>
-    <p id="2"></p>
+
+<form>
+<div>
+	<span>Họ tên</span>
+	<input type="text" id="hoten" autofocus>
+	<span>Họ tên bắt buộc nhập</span>
+</div>
+<div>
+	<span>Lớp</span>
+	<input type="text" id="lop">
+	<span>Lớp bắt buộc nhập</span>
+</div>
+<div>
+	<span>Điểm Toán</span>
+	<input type="text" id="toan">
+	<span>Điểm toán phải nhập và phải là số trong khoảng từ 0 đến 10</span>
+</div>
+<div>
+	<span>Điểm Lý</span>
+	<input type="text" id="ly">
+	<span>Điểm lý phải nhập và phải là số trong khoảng từ 0 đến 10</span>
+</div>
+<div>
+	<span>Điểm Hóa</span>
+	<input type="text" id="hoa">
+	<span>Điểm hóa phải nhập và phải là số trong khoảng từ 0 đến 10</span>
+</div>
+<input type="button" id="nhap" value="Nhập">
+</form>
+
+<h3>Danh sách học viên</h3>
+
+<div>
+<table>
+	<tr>
+		<th>STT</th>
+		<th>Họ tên</th>
+		<th>Toán</th>
+		<th>Lý</th>
+		<th>Hóa</th>
+		<th>Trung bình</th>
+	</tr>
+</table>
+<p>Tính TB</p>
+<p>Tìm HSG</p>
+</div>
 </body>
-<script>
-window.alert("batdau");
-</script>
-<script>
-var x=prompt("Ten");
-document.getElementById("1").innerHTML=x;
-</script>
-<script>
-var y=prompt("TP");
-document.getElementById("2").innerHTML=y;
-</script>
 </html>
