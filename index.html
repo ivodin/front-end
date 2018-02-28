@@ -49,16 +49,26 @@ $(document).ready(function(){
 			$("#lop + span").show();
 		}
 		var toan=$("#toan").val();
-		if (toan=="") {
+		if (toan==""||toan<0||toan>10||isNaN(toan)==true) {
 			$("#toan + span").show();
 		}
 		var ly=$("#ly").val();
-		if (ly=="") {
+		if (ly==""||ly<0||ly>10||isNaN(ly)==true) {
 			$("#ly + span").show();
 		}
 		var hoa=$("#hoa").val();
-		if (hoa=="") {
+		if (hoa==""||hoa<0||hoa>10||isNaN(hoa)==true) {
 			$("#hoa + span").show();
+		}
+		if (hoten!=""&&lop!=""&&toan!=""&&ly!=""&&hoa!=""&&toan>=0&&toan<=10&&ly>=0&&ly<=10&&hoa>=0&&hoa<=10) {
+			$("table").append("<tr>
+			<td>STT</td>
+			<td>Họ tên</td>
+			<td>Toán</td>
+			<td>Lý</td>
+			<td>Hóa</td>
+			<td>Trung bình</td>
+			</tr>");
 		}
 	})
 });
