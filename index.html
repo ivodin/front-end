@@ -44,14 +44,11 @@ margin-left:75%;
 </style>
 <head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
 <script>
 $(document).ready(function(){
 	$("#nhap").mouseenter(function() {$("#nhap").css("color","red")});
 	$("#nhap").mouseout(function() {$("#nhap").css("color","black")});
-	$("#tb").mouseenter(function() {$("#tb").css("color","red")});
-	$("#tb").mouseout(function() {$("#tb").css("color","black")});
-	$("#hsg").mouseenter(function() {$("#hsg").css("color","red")});
-	$("#hsg").mouseout(function() {$("#hsg").css("color","black")});
 	$("#nhap").click(function() {
 		$("input + span").hide();
 		var hoten=$("#hoten").val();
@@ -75,16 +72,38 @@ $(document).ready(function(){
 			$("#hoa + span").show();
 		}
 		if (hoten!=""&&lop!=""&&toan!=""&&ly!=""&&hoa!=""&&toan>=0&&toan<=10&&ly>=0&&ly<=10&&hoa>=0&&hoa<=10) {
-			$("table").append("<tr><td id=r"+">"+"</td><td>"+hoten+"</td><td>"+toan+"</td><td>"+ly+"</td><td>"+hoa+"</td><td class="+"tb"+">?</td></tr>");
+			var stt=$("table tr").length;
+			$("table").append("<tr><td>"+stt+"</td><td>"+hoten+"</td><td>"+toan+"</td><td>"+ly+"</td><td>"+hoa+"</td><td>?</td></tr>");
 		}
 	});
-		
-		var i=$("table tr").length;
-		$("#tb").click(function() {alert(i);
-		});
 });
 </script>
-</head>
+<script>
+$(document).ready(function(){
+	$("#tb").mouseenter(function() {$("#tb").css("color","red")});
+	$("#tb").mouseout(function() {$("#tb").css("color","black")});
+	$("#hsg").mouseenter(function() {$("#hsg").css("color","red")});
+	$("#hsg").mouseout(function() {$("#hsg").css("color","black")});
+	$("#tb").click(function() {
+		$("table tr").each(function() {
+		tong=parseInt(this.cells[2].innerHTML)+parseInt(this.cells[3].innerHTML)+parseInt(this.cells[4].innerHTML);
+		var i=this.rowIndex;
+		alert(typeof $("table").rows[i]);
+		console.log;
+		/*if (isNaN(tong)==false) {tb=(tong/3).toFixed(2); $("table tr:eq(i)").cells[5].html("aaa");}*/
+		})
+
+	});
+});
+/*	function tbc() {
+		var i,tong,tbc;
+		for (i=1,i<$("table tr").length,i++) {
+		tong=parseInt($("table").get(0).rows[i].cells[2].innerHTML)+parseInt($("table").get(0).rows[i].cells[3].innerHTML)+parseInt($("table").get(0).rows[i].cells[4].innerHTML);
+		tb=(tong/3).toFixed(2);
+		$("table").get(0).rows[i].cells[2].html(tb);
+		}
+	}*/
+</script>
 
 <body>
 
@@ -129,17 +148,14 @@ $(document).ready(function(){
 		<th width="15%">Hóa</th>
 		<th width="15%">Trung bình</th>
 	</tr>
-		<tr>
-		<th width="15%">STT</th>
-		<th width="25%">Họ tên</th>
-		<th width="15%">Toán</th>
-		<th width="15%">Lý</th>
-		<th width="15%">Hóa</th>
-		<th width="15%">Trung bình</th>
-	</tr>
 </table>
 <p id="tb">Tính TB</p>
 <p id="hsg">Tìm HSG</p>
 </div>
 </body>
 </html>
+<!-- Thắc mắc:
+cách rút gọn các đk của if
+vì sao tính tbc bằng jquery ko đc
+
+ -->
