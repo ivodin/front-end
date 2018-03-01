@@ -14,7 +14,7 @@ form > div {
 }
 span:first-child {
 	float: left;
-	width: 10%;
+	width: 15%;
 }
 input {
 	width: 25%;
@@ -30,16 +30,30 @@ table {
 	margin-left: 20%;
 
 }
-table, th, td {
+table, th, tr, td {
     border: 1px solid black;
     border-collapse: collapse;
-}	
+    text-align: center;	
+}
+#nhap {
+margin-left: 20%;
+}
+#tb,#hsg {
+margin-left:75%;
+}
 </style>
 <head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
 $(document).ready(function(){
+	$("#nhap").mouseenter(function() {$("#nhap").css("color","red")});
+	$("#nhap").mouseout(function() {$("#nhap").css("color","black")});
+	$("#tb").mouseenter(function() {$("#tb").css("color","red")});
+	$("#tb").mouseout(function() {$("#tb").css("color","black")});
+	$("#hsg").mouseenter(function() {$("#hsg").css("color","red")});
+	$("#hsg").mouseout(function() {$("#hsg").css("color","black")});
 	$("#nhap").click(function() {
+		$("input + span").hide();
 		var hoten=$("#hoten").val();
 		if (hoten=="") {
 			$("#hoten + span").show();
@@ -61,16 +75,13 @@ $(document).ready(function(){
 			$("#hoa + span").show();
 		}
 		if (hoten!=""&&lop!=""&&toan!=""&&ly!=""&&hoa!=""&&toan>=0&&toan<=10&&ly>=0&&ly<=10&&hoa>=0&&hoa<=10) {
-			$("table").append("<tr>
-			<td>STT</td>
-			<td>Họ tên</td>
-			<td>Toán</td>
-			<td>Lý</td>
-			<td>Hóa</td>
-			<td>Trung bình</td>
-			</tr>");
+			$("table").append("<tr><td id=r"+">"+"</td><td>"+hoten+"</td><td>"+toan+"</td><td>"+ly+"</td><td>"+hoa+"</td><td class="+"tb"+">?</td></tr>");
 		}
-	})
+	});
+		
+		var i=$("#table").rows.length;
+		$("#tb").click(function() {alert(i);
+		});
 });
 </script>
 </head>
@@ -103,24 +114,32 @@ $(document).ready(function(){
 	<input type="text" id="hoa">
 	<span>Điểm hóa phải nhập và phải là số trong khoảng từ 0 đến 10</span>
 </div>
-<input type="button" id="nhap" value="Nhập">
+<p id="nhap">Nhập</p>
 </form>
 
 <h3>Danh sách học viên</h3>
 
 <div>
-<table>
+<table id="table">
 	<tr>
-		<th>STT</th>
-		<th>Họ tên</th>
-		<th>Toán</th>
-		<th>Lý</th>
-		<th>Hóa</th>
-		<th>Trung bình</th>
+		<th width="15%">STT</th>
+		<th width="25%">Họ tên</th>
+		<th width="15%">Toán</th>
+		<th width="15%">Lý</th>
+		<th width="15%">Hóa</th>
+		<th width="15%">Trung bình</th>
+	</tr>
+		<tr>
+		<th width="15%">STT</th>
+		<th width="25%">Họ tên</th>
+		<th width="15%">Toán</th>
+		<th width="15%">Lý</th>
+		<th width="15%">Hóa</th>
+		<th width="15%">Trung bình</th>
 	</tr>
 </table>
-<p>Tính TB</p>
-<p>Tìm HSG</p>
+<p id="tb">Tính TB</p>
+<p id="hsg">Tìm HSG</p>
 </div>
 </body>
 </html>
