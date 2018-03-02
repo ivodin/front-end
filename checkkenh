@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<meta content="text/html; charset=utf-8" />
+<style>
+table {
+	width: 100%;
+	margin-top: 5%;
+}
+table,th,td {
+	text-align: center;
+}
+</style>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<script>
+	$(function() {
+		$("#nhap").click(function() {
+			if($("#kenh").val()!=""&&$("#mail").val()!=""){
+				var stt=$("table tr").length;
+				var kenh=$("#kenh").val();
+				var mail=$("#mail").val();
+				$("table").append("<tr><td>"+stt+"</td><td>"+kenh+"</td><td>"+mail+"<td>zzz</td></tr>");
+				$("p").remove();
+				$("p").append("<iframe src='"+kenh+"'></iframe>");
+			}
+		})
+	})
+</script>
+
+<body>
+
+<form>
+	<span>Link kênh</span>
+	<input type="text" id="kenh" autofocus size="50%">
+	<span>Mail</span>
+	<input type="text" id="mail">
+	<input type="button" id="nhap" value="Nhập">
+</form>
+
+<p></p>
+<iframe src="https://www.youtube.com"></iframe>
+<div>
+<table>
+	<tr>
+		<th width="25%">STT</th>
+		<th width="25%">Link kênh</th>
+		<th width="25%">Mail</th>
+		<th width="25%">Trạng thái</th>
+	</tr>
+</table>
+</div>
+</body>
+</html>
+
