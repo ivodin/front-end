@@ -73,7 +73,7 @@ $(document).ready(function(){
 		}
 		if (hoten!=""&&lop!=""&&toan!=""&&ly!=""&&hoa!=""&&toan>=0&&toan<=10&&ly>=0&&ly<=10&&hoa>=0&&hoa<=10) {
 			var stt=$("table tr").length;
-			$("table").append("<tr><td>"+stt+"</td><td>"+hoten+"</td><td>"+toan+"</td><td>"+ly+"</td><td>"+hoa+"</td><td>?</td></tr>");
+			$("table").append("<tr><td>"+stt+"</td><td>"+hoten+"</td><td>"+toan+"</td><td>"+ly+"</td><td>"+hoa+"</td><td class='tb'>?</td></tr>");
 		}
 	});
 });
@@ -87,14 +87,11 @@ $(document).ready(function(){
 	$("#tb").click(function() {
 		$("table tr").each(function() {
 		tong=parseInt(this.cells[2].innerHTML)+parseInt(this.cells[3].innerHTML)+parseInt(this.cells[4].innerHTML);
-		var i=this.rowIndex;
-		alert(typeof $("table").rows[i]);
-		console.log;
-		/*if (isNaN(tong)==false) {tb=(tong/3).toFixed(2); $("table tr:eq(i)").cells[5].html("aaa");}*/
+		if (isNaN(tong)==false) {tb=(tong/3).toFixed(2); $(this).find(".tb").text(tb);}
 		})
 
 	});
-});
+
 /*	function tbc() {
 		var i,tong,tbc;
 		for (i=1,i<$("table tr").length,i++) {
@@ -103,6 +100,13 @@ $(document).ready(function(){
 		$("table").get(0).rows[i].cells[2].html(tb);
 		}
 	}*/
+	$("#hsg").click(function() {
+		$("table tr").each(function() {
+		var tb2=$(this).find(".tb").text();
+		if(Number(tb2)>=8) {$(this).css("color", "red")}
+		})
+	});
+});
 </script>
 
 <body>
@@ -156,6 +160,7 @@ $(document).ready(function(){
 </html>
 <!-- Thắc mắc:
 cách rút gọn các đk của if
-vì sao tính tbc bằng jquery ko đc
+vì sao tính tbc bằng jquery ko đc (hàm tbc)
+cách dùng jquery lấy giá trị điểm theo dòng, thay vì parseInt(this.cells[2].innerHTML)
 
  -->
