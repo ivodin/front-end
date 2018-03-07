@@ -1,0 +1,27 @@
+select {
+	border-radius: 5px;
+	width: 15%;
+}
+#formmau {
+	width: 50%;
+	margin-top: 5%;
+	margin-left: 20%;
+	padding: 5%;
+	display: none;
+}
+form > div > div {
+	margin: 1%;
+}
+span:first-child {
+	float: left;
+	width: 20%;
+}
+div input {
+	width: 25%;
+}
+form > div {
+	border-bottom: 1px solid black;
+}
+input + span {
+	display: none;
+}
