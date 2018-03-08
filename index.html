@@ -12,20 +12,65 @@ function dropdown() {
 		dropdown+="<option value='"+i+"'>"+i+"</option>";
 	}
 	$("select").append(dropdown)
+}
+
+function FormValidate() {
+	var hoten=[];
+	$(".hoten").each(function() {
+		hoten.push($(this).val());
+	})
+	var lop=[];
+	$(".lop").each(function() {
+		lop.push($(this).val());
+	})
+	var email=[];
+	$(".email").each(function() {
+		email.push($(this).val());
+	})
+	var sdt=[];
+	$(".sdt").each(function() {
+		sdt.push($(this).val());
+	})
+	var van=[];
+	$(".van").each(function() {
+		van.push($(this).val());
+	})
+	var daoduc=[];
+	$(".daoduc").each(function() {
+		daoduc.push($(this).val());
+	})
+	var laptrinh=[];
+	$(".laptrinh").each(function() {
+		laptrinh.push($(this).val());
+	})
+
+	var Formvalidate = false;
+	$("input + span").hide();
+	for (i=1;i<=$("option:selected").val();i++) {
+		if (hoten[i]=="") {
+			$(".hoten:eq("+i+")+span").show();
+			return Formvalidate = true;
+		}	
 	}
+}
 function hienthiForm() {
+	$("form").empty();
 	var soluongForm=$("option:selected").val();
 	var Form=$("#formmau").html();
 	for (i=1;i<=soluongForm;i++) {
 		$("form").append(Form);
-
 	}
+	$("p:last").css("border-bottom", "hidden");
+	$("p:last").html("<input type='button' id='nhap' value='Nhập'>");
+
 }
 $(function(){
 	dropdown();
 	$("select").change(function(){
-		$("form").empty();
 		hienthiForm();
+		$("#nhap").click(function() {
+		FormValidate();
+		})
 	})
 })
 
@@ -35,45 +80,44 @@ $(function(){
 <select>
 <option hidden>Chọn số lượng</option>
 </select>​
-<div id="formmau">
-	<div>
+	<div id="formmau">
 		<div>
 			<span>Họ tên</span>
-			<input type="text" id="hoten">
+			<input type="text" class="hoten">
 			<span>Họ tên bắt buộc nhập</span>
 		</div>
 		<div>
 			<span>Lớp</span>
-			<input type="text" id="lop">
+			<input type="text" class="lop">
 			<span>Lớp bắt buộc nhập</span>
 		</div>
 		<div>
 			<span>Email</span>
-			<input type="text" id="email">
+			<input type="text" class="email">
 			<span>Email bắt buộc nhập, đúng định dạng</span>
 		</div>
 		<div>
 			<span>Số điện thoại</span>
-			<input type="text" id="sdt">
+			<input type="text" class="sdt">
 			<span>Số điện thoại bắt buộc nhập, đúng định dạng</span>
 		</div>
 		<div>
 			<span>Điểm Văn</span>
-			<input type="text" id="van">
+			<input type="text" class="van">
 			<span>Điểm văn phải nhập và phải là số trong khoảng từ 0 đến 10</span>
 		</div>
 		<div>
 			<span>Điểm Đạo đức</span>
-			<input type="text" id="daoduc">
+			<input type="text" class="daoduc">
 			<span>Điểm Đạo đức phải nhập và phải là số trong khoảng từ 0 đến 10</span>
 		</div>
 		<div>
 			<span>Điểm Lập trình</span>
-			<input type="text" id="laptrinh">
+			<input type="text" class="laptrinh">
 			<span>Điểm lập trình phải nhập và phải là số trong khoảng từ 0 đến 10</span>
 		</div>
+		<p></p>
 	</div>
-</div>
 <form>
 </form>
 </body>
