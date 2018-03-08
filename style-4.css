@@ -9,7 +9,7 @@ select {
 	padding: 5%;
 	display: none;
 }
-form > div > div {
+form > div {
 	margin: 1%;
 }
 span:first-child {
@@ -19,8 +19,11 @@ span:first-child {
 div input {
 	width: 25%;
 }
-form > div {
+form > p {
 	border-bottom: 1px solid black;
+	margin-left: 1%;
+	width:45%;
+	text-align: center;
 }
 input + span {
 	display: none;
