@@ -13,7 +13,17 @@ function dropdown() {
 	}
 	$("select").append(dropdown)
 }
+function hienthiForm() {
+	$("form").empty();
+	var soluongForm=$("option:selected").val();
+	var Form=$("#formmau").html();
+	for (i=1;i<=soluongForm;i++) {
+		$("form").append(Form);
+	}
+	$("p:last").css("border-bottom", "hidden");
+	$("p:last").html("<input type='button' id='nhap' value='Nhập'>");
 
+}
 function FormValidate() {
 	var hoten=[];
 	$(".hoten").each(function() {
@@ -48,28 +58,45 @@ function FormValidate() {
 	$("input + span").hide();
 	for (i=1;i<=$("option:selected").val();i++) {
 		if (hoten[i]=="") {
-			$(".hoten:eq("+i+")+span").show();
-			return Formvalidate = true;
-		}	
+			$(".hoten:eq("+i+") + span").show();
+			Formvalidate = true;
+		}
+		if (lop[i]=="") {
+			$(".lop:eq("+i+") + span").show();
+			Formvalidate = true;
+		}
+		if (email[i]==""||!/^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/.test(email[i])) {
+			$(".email:eq("+i+") + span").show();
+			Formvalidate = true;
+		}
+		if (sdt[i]==""||!/^[0-9]/.test(sdt[i])) {
+			$(".sdt:eq("+i+") + span").show();
+			Formvalidate = true;
+		}
+		if (van[i]==""||van[i]<0||van[i]>10||isNaN(van[i])==true) {
+			$(".van:eq("+i+") + span").show();
+			Formvalidate = true;
+		}
+		if (daoduc[i]==""||daoduc[i]<0||daoduc[i]>10||isNaN(daoduc[i])==true) {
+			$(".daoduc:eq("+i+") + span").show();
+			Formvalidate = true;
+		}
+		if (laptrinh[i]==""||laptrinh[i]<0||laptrinh[i]>10||isNaN(laptrinh[i])==true) {
+			$(".laptrinh:eq("+i+") + span").show();
+			Formvalidate = true;
+		}
 	}
 }
-function hienthiForm() {
-	$("form").empty();
-	var soluongForm=$("option:selected").val();
-	var Form=$("#formmau").html();
-	for (i=1;i<=soluongForm;i++) {
-		$("form").append(Form);
-	}
-	$("p:last").css("border-bottom", "hidden");
-	$("p:last").html("<input type='button' id='nhap' value='Nhập'>");
 
-}
 $(function(){
 	dropdown();
 	$("select").change(function(){
 		hienthiForm();
 		$("#nhap").click(function() {
 		FormValidate();
+		if (!Formvalidate) {
+			alert("a");
+		}
 		})
 	})
 })
